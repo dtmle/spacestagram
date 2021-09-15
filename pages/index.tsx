@@ -88,15 +88,24 @@ export default function Home() {
               hasMore={hasNextPage}
               loadMore={fetchNextPage}
               className={styles.grid}
+              loader={
+                <div className="loader" key={0}>
+                  Loading ...
+                </div>
+              }
             >
               {data?.pages.map((page) =>
                 page.results.map((photo) => (
-                  <img
-                    key={photo.date}
-                    className={styles.img}
-                    alt={photo.title}
-                    src={photo.url}
-                  />
+                  <figure key={photo.date} className={styles.img__container}>
+                    <img
+                      className={styles.img}
+                      alt={photo.title}
+                      src={photo.url}
+                    />
+                    <figcaption>
+                      <DisplayText size="medium">{photo.date}</DisplayText>
+                    </figcaption>
+                  </figure>
                 ))
               )}
             </InfiniteScroll>

@@ -4,6 +4,7 @@ import { AppProvider } from "@shopify/polaris";
 import enTranslations from "@shopify/polaris/locales/en.json";
 import "@shopify/polaris/dist/styles.css";
 import { QueryClient, QueryClientProvider } from "react-query";
+import "../styles/globals.css";
 
 export default class WrappedApp extends App {
   render() {
