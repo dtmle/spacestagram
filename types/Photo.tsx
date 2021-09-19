@@ -7,6 +7,7 @@ type Photo = {
   title: string;
   url: string;
   thumbnail_url?: string;
+  like?: boolean;
 };
 
 export default Photo;
