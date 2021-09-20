@@ -5,9 +5,9 @@ import InfiniteScroll from "react-infinite-scroller";
 import Head from "next/head";
 import { useInfiniteQuery } from "react-query";
 import { fetchPosts } from "../services/Nasa.service";
-import ImageModal from "../components/ImageModal";
 import { useCallback, useState } from "react";
 import styles from "../styles/Home.module.css";
+import ImageModal from "../components/ImageModal";
 
 // Note: NASA is returning a 500 when querying on June 2021 when you include the thumb=true queryParam -- not sure why... otherwise I would like to display the Youtube video thumbnail when it's a video.
 
