@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Photo from "../types/Photo";
-import { DisplayText, Layout, Page } from "@shopify/polaris";
+import { DisplayText, Layout, Page, Spinner } from "@shopify/polaris";
 import InfiniteScroll from "react-infinite-scroller";
 import Head from "next/head";
 import { useInfiniteQuery } from "react-query";
@@ -52,32 +52,37 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {selectedPhoto && (
+        <ImageModal
+          photo={selectedPhoto}
+          active={modalActive}
+          handleChange={handleModalChange}
+          handleLike={handleLike}
+        />
+      )}
       <Layout>
-        <Layout.Section>
+        <Layout.Section oneHalf>
           <DisplayText size="extraLarge">Spacestagram</DisplayText>
           <DisplayText size="medium">Astronomy pictures of the day</DisplayText>
         </Layout.Section>
-        {selectedPhoto && (
-          <ImageModal
-            photo={selectedPhoto}
-            active={modalActive}
-            handleChange={handleModalChange}
-            handleLike={handleLike}
-          />
-        )}
         <Layout.Section>
           {isLoading ? (
-            <p>Loading...</p>
+            <div className={styles.span_all}>
+              <Spinner accessibilityLabel="Loading more images" size="large" />
+            </div>
           ) : isError ? (
-            <p>There was an error</p>
+            <p>Uh-oh! There was an error. Please try again later.</p>
           ) : (
             <InfiniteScroll
               hasMore={hasNextPage}
-              loadMore={fetchNextPage}
+              loadMore={() => fetchNextPage()}
               className={styles.grid}
               loader={
-                <div className="loader" key={0}>
-                  Loading ...
+                <div className={styles.span_all}>
+                  <Spinner
+                    accessibilityLabel="Loading more images"
+                    size="large"
+                  />
                 </div>
               }
             >
@@ -101,9 +106,6 @@ export default function Home() {
               )}
             </InfiniteScroll>
           )}
-        </Layout.Section>
-        <Layout.Section>
-          <footer className={styles.footer}>Footer</footer>
         </Layout.Section>
       </Layout>
     </Page>

@@ -39,5 +39,6 @@ export const fetchPosts = async ({ pageParam = 0 }) => {
     .sort((a, b) => {
       return +new Date(b.date) - +new Date(a.date);
     });
+
   return { results: filteredResults, nextPage: pageParam + 1, totalPages };
 };

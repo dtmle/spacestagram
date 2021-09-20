@@ -72,3 +72,8 @@
 .img__container:hover figcaption {
   opacity: 1;
 }
+
+.span_all {
+  grid-column: 1 / -1;
+  text-align: center;
+}
