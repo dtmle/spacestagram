@@ -10,12 +10,7 @@ interface Props {
   handleLike: () => void;
 }
 
-export default function ImageModal({
-  photo,
-  active,
-  handleChange,
-  handleLike,
-}: Props) {
+const ImageModal = ({ photo, active, handleChange, handleLike }: Props) => {
   return (
     <Modal
       large
@@ -42,4 +37,6 @@ export default function ImageModal({
       </Modal.Section>
     </Modal>
   );
-}
+};
+
+export default ImageModal;

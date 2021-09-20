@@ -10,8 +10,7 @@ import styles from "../styles/Home.module.css";
 import ImageModal from "../components/ImageModal";
 
 // Note: NASA is returning a 500 when querying on June 2021 when you include the thumb=true queryParam -- not sure why... otherwise I would like to display the Youtube video thumbnail when it's a video.
-
-export default function Home() {
+const Home = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<null | Photo>(null);
   const [modalActive, setModalActive] = useState(false);
 
@@ -110,4 +109,6 @@ export default function Home() {
       </Layout>
     </Page>
   );
-}
+};
+
+export default Home;
